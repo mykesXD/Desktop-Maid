@@ -1,0 +1,147 @@
+﻿<Window x:Class="Maid.MainWindow"
+        Name="GameWindow"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
+        xmlns:local="clr-namespace:Maid"
+        mc:Ignorable="d"
+        ShowInTaskbar="False"
+        Title="Desktop Maid" Height="200" Width="300" >
+    <Canvas Name="Background" Focusable="True" Background="Transparent">
+        <Rectangle Name="Player" Height="150" Width="150" Canvas.Left="85" Canvas.Top="95" RenderTransformOrigin="0.4,0.4" MouseLeftButtonDown="Player_MouseLeftButtonDown" MouseRightButtonDown="Player_MouseRightButtonDown">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="Flip" ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/idle1.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Grid Name="MenuGrid" Height="100" Width="55" Canvas.Left="55" Canvas.Top="100" Visibility="Hidden"
+              tz:Transitionz.Visibility="{Binding ElementName=MenuGrid, Path=Visibility}"
+              tz:Transitionz.Translate="{tz:TranslateParams From='10,0', To='0,0', Duration=200, TransitionOn=Visibility}"
+              tz:Transitionz.Opacity="{tz:OpacityParams From=0, To=1, Duration=200, TransitionOn=Visibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Ellipse
+              Grid.Row="0"
+              Height="40"
+              Width="40"
+              Fill="#FFEADFD1">
+            </Ellipse>
+            <Ellipse
+              Name ="Settings"
+              Grid.Row="0"
+              Height="40"
+              Width="40"
+              StrokeThickness="3" Stroke="#FFE8E8E8" MouseLeftButtonDown="Settings_MouseLeftButtonDown">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="images/settings.png">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleY="0.8" ScaleX="0.8"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <Ellipse
+              Grid.Row="1"
+              Height="40"
+              Width="40"
+              Fill="#FFEADFD1">
+            </Ellipse>
+            <Ellipse
+              Grid.Row="1"
+              Height="40"
+              Width="40"
+              StrokeThickness="3" Stroke="#FFE8E8E8">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="images/bell.png">
+                        <ImageBrush.Transform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-1.1"/>
+                            </TransformGroup>
+                        </ImageBrush.Transform>
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleY="0.8" ScaleX="0.8"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+
+        <Grid Name="SpeechGrid" Height="200" Width="300" Visibility="Hidden"
+              tz:Transitionz.Visibility="{Binding ElementName=SpeechGrid, Path=Visibility}"
+              tz:Transitionz.Translate="{tz:TranslateParams From='0,10', To='0,0', Duration=200, TransitionOn=Visibility}"
+              tz:Transitionz.Opacity="{tz:OpacityParams From=0, To=1, Duration=200, TransitionOn=Visibility}">
+            <Rectangle Name="SpeechBoxPointer" Canvas.Left="140" Canvas.Top="66" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Margin="146,83,149,112">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="#FFEADFD1"/>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Grid Height="86" Canvas.Left="52" Width="200" Margin="50,0,50,114">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+
+                <TextBox Grid.Column="1" Name="SpeechBox" Canvas.Left="0" TextWrapping="Wrap" TextAlignment="Center" Text="Good morning!" FontSize = "16"
+                     Canvas.Top="0" TextChanged="TextBox_TextChanged" Visibility="Visible" FontFamily="Arial Rounded MT Bold" Background="#FFEADFD1" BorderThickness="0"
+                     VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     IsInactiveSelectionHighlightEnabled="True" MaxWidth="200" MaxHeight="90" Padding="7,7,7,10" 
+                     AllowDrop="False" IsTabStop="False" RenderTransformOrigin="0.505,0.486" HorizontalScrollBarVisibility="Visible" Margin="0.017,0,2,0" UseLayoutRounding="False"
+                     Focusable="False" HorizontalAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+
+                </TextBox>
+
+            </Grid>
+        </Grid>
+
+
+
+    </Canvas>
+
+</Window>

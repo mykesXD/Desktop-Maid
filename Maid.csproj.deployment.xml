@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeploymentSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AuthenticationPasswordValue>
+    <Value />
+  </AuthenticationPasswordValue>
+  <DeployOnBuild>false</DeployOnBuild>
+  <DeployDependencies>false</DeployDependencies>
+  <DeploySatellites>false</DeploySatellites>
+  <DeployAllOther>false</DeployAllOther>
+  <DeployConfig>false</DeployConfig>
+  <DeployCrt>false</DeployCrt>
+</DeploymentSettings>

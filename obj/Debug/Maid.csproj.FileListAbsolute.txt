@@ -1,0 +1,15 @@
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Debug\Maid.exe.config
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Debug\Maid.exe
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Debug\Maid.pdb
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.csprojAssemblyReference.cache
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\MainWindow.g.cs
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\App.g.cs
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid_MarkupCompile.cache
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid_MarkupCompile.lref
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\MainWindow.baml
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.g.resources
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.Properties.Resources.resources
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.csproj.GenerateResource.cache
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.csproj.CoreCompileInputs.cache
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.exe
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Debug\Maid.pdb

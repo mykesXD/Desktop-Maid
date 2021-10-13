@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maid", "Maid.csproj", "{D278AD66-FE72-47FE-82CE-F192175F29FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D278AD66-FE72-47FE-82CE-F192175F29FC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{D278AD66-FE72-47FE-82CE-F192175F29FC}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{D278AD66-FE72-47FE-82CE-F192175F29FC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{D278AD66-FE72-47FE-82CE-F192175F29FC}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA977A82-3E51-4223-852C-76418852E0B9}
+	EndGlobalSection
+EndGlobal
