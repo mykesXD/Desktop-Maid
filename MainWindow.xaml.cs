@@ -42,14 +42,16 @@ namespace Maid
         bool standing = false;
         Animations anim = new Animations();
         Messages messageList = new Messages();
+        readonly AvatarActions avatarAction = new AvatarActions();
         public List<IntPtr> coveredWindow = new List<IntPtr>();
         public List<IntPtr> windowLst = new List<IntPtr>();
         public List<Rect> windowRect = new List<Rect>();
+        public static List<int> actionList = new List<int>();
         List<Point> mousePositions = new List<Point>();
         IDictionary<IntPtr, Rect> visibleWindows = new Dictionary<IntPtr, Rect>();
         IDictionary<IntPtr, Rect> desktopWindows = new Dictionary<IntPtr, Rect>();
         IntPtr maidWindowHandle;
-        bool dragged = false;
+        public static bool dragged = false;
         bool mouseUp = false;
         int avatarHeight = 150;
         int avatarCanvasTop = 220;
@@ -57,14 +59,16 @@ namespace Maid
         int gravity = 1;
         int taskbarHeight = 843;
         IntPtr TaskBarHandle;
-        int run = 3;
+        int action = 0;
+        int actionTime;
+        int actionCount = 100;
         int mov = 0;
         int up = 5;
         int down = 0;
         int standingTop = 0;
         public static bool settingsWindowOpen = false;
         IntPtr standingWindows;
-        string avatarState = "idle";
+        public static string avatarState = "idle";
         IntPtr standingWinHandle;
         public bool _IsDragInProgress { get; set; }
         public System.Windows.Point _FormMousePosition { get; set; }
@@ -129,7 +133,7 @@ namespace Maid
             avatarHeight = Convert.ToInt32(Player.Height);
 
             randomTimer.Tick += randomTimerTick;
-            randomTimer.Interval = new TimeSpan(0, 0, 6);
+            randomTimer.Interval = new TimeSpan(0, 0, 1);
             randomTimer.Start();
 
             actionTimer.Tick += actionTimerTick;
@@ -140,7 +144,15 @@ namespace Maid
             windowTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             windowTimer.Start();
 
-
+            actionList.Add(1);
+            actionList.Add(2);
+            actionList.Add(3);
+            actionList.Add(4);
+            actionList.Add(5);
+            foreach (int action in actionList)
+            {
+                Console.WriteLine(action);
+            }
 
             var AnimationTimer = new DispatcherTimer();
             AnimationTimer.Tick += AnimationTimerTick;
@@ -171,7 +183,7 @@ namespace Maid
                 //if (!(windowRect[i].Right == 1928 && windowRect[i].Bottom == 1048 && windowRect[i].Left == -8 && windowRect[i].Top == -8))
                 {
                     desktopWindows.Add(windowLst[i], windowRect[i]);
-                    Console.WriteLine("VISIBLE {0} -> {1}, {2}", i, windowLst[i], windowRect[i].Top);
+                    //Console.WriteLine("{0} {1} {2} {3} {4}", windowRect[i].Left, windowRect[i].Right, windowRect[i].Top, windowRect[i].Bottom, GetTitle(windowLst[i]));
                 }
             }
             task1.Start();
@@ -182,7 +194,7 @@ namespace Maid
         {
             if (dragged)
             {
-                anim.PlayPlayerAnimation(Player, avatarState);
+                anim.PlayPlayerAnimation(Player, avatarState,climbing);
             }
         }
 
@@ -192,7 +204,7 @@ namespace Maid
 
         private void AnimationTimerTick(object sender, EventArgs e)
         {
-            anim.PlayPlayerAnimation(Player, avatarState);
+            anim.PlayPlayerAnimation(Player, avatarState,climbing);
         }
 
         private void windowTimerTick(object sender, EventArgs e)
@@ -209,45 +221,84 @@ namespace Maid
                 
                 //Console.WriteLine("MOUSE {0}", Windows.GetMousePosition());
                 mousePositions.Add(shit);
-                if (mousePositions.Count > 5)
+                if (mousePositions.Count > 10)
                 {
-                    if(mousePositions.ElementAt(mousePositions.Count - 1).X > mousePositions.ElementAt(mousePositions.Count - 5).X)
+                    if (mousePositions.ElementAt(mousePositions.Count - 1).X > mousePositions.ElementAt(mousePositions.Count - 10).X && mousePositions.ElementAt(mousePositions.Count - 1).X - mousePositions.ElementAt(mousePositions.Count - 10).X > 2)
                     {
-                        if(Flip.ScaleX == 1)
+                        //Console.WriteLine(mousePositions.ElementAt(mousePositions.Count - 1).X - mousePositions.ElementAt(mousePositions.Count - 10).X);
+                        //avatarState = "dragRight";
+                        if (Rotate.Angle < 34)
                         {
-                            avatarState = "dragRight";
+                            Rotate.Angle += 2;
                         }
                         else
                         {
-                            avatarState = "dragLeft";
+                            //avatarState = "dragLeft";
+                            if (Rotate.Angle > -34)
+                            {
+                                Rotate.Angle -= 2;
+                            }
                         }
                         //Console.WriteLine("RIGHT");
                     }
-                    else if(mousePositions.ElementAt(mousePositions.Count - 1).X < mousePositions.ElementAt(mousePositions.Count - 5).X)
+                    else if (mousePositions.ElementAt(mousePositions.Count - 1).X < mousePositions.ElementAt(mousePositions.Count - 10).X && mousePositions.ElementAt(mousePositions.Count - 10).X - mousePositions.ElementAt(mousePositions.Count - 1).X > 2)
                     {
-                        if (Flip.ScaleX == 1)
+                        //Console.WriteLine(mousePositions.ElementAt(mousePositions.Count - 10).X - mousePositions.ElementAt(mousePositions.Count - 1).X);
+                        //avatarState = "dragLeft";
+                        if (Rotate.Angle > -34)
                         {
-                            avatarState = "dragLeft";
-
+                            Rotate.Angle -= 1;
                         }
                         else
                         {
-                            avatarState = "dragRight";
+                            //avatarState = "dragRight";
+                            if (Rotate.Angle < 34)
+                            {
+                                Rotate.Angle += 1;
+                            }
                         }
                         //Console.WriteLine("LEFT");
                     }
                     else
                     {
-
-                        avatarState = "drag";
+                        if (Rotate.Angle > 0)
+                        {
+                            if(Rotate.Angle - 2 < 0)
+                            {
+                                Rotate.Angle -= 1;
+                            }
+                            else
+                            {
+                                Rotate.Angle -= 2;
+                            }
+                            
+                            //Console.WriteLine(Rotate.Angle);
+                        }
+                        else if (Rotate.Angle < 0)
+                        {
+                            //Console.WriteLine(Rotate.Angle);
+                            if (Rotate.Angle + 2 > 0)
+                            {
+                                Rotate.Angle += 1;
+                            }
+                            else
+                            {
+                                Rotate.Angle += 2;
+                            }
+                        }
+                        //avatarState = "idle";
                         //Console.WriteLine("NOT MOVING");
-
                     }
+    
                 }
             }
             if (mouseUp)
             {
-                avatarState = "idle";
+                if(avatarState == "idle" || avatarState == "runRight" || climbing || avatarState == "runLeft")
+                {
+                    Rotate.Angle = 0;
+                }
+                //avatarState = "idle";
                 int mouseCount = 5;
                 //Console.WriteLine(mousePositions.Count);
                 double speedX = 0;
@@ -272,19 +323,19 @@ namespace Maid
                     {
                         if (speedXAvg > 0)
                         {
-                            GameWindow.Left += 2;
+                            GameWindow.Left += 4;
                         }
                         else if (speedXAvg < 0)
                         {
-                            GameWindow.Left -= 2;
+                            GameWindow.Left -= 4;
                         }
                         if (speedYAvg > 0)
                         {
-                            GameWindow.Top -= 2;
+                            GameWindow.Top -= 4;
                         }
                         else if (speedYAvg < 0)
                         {
-                            GameWindow.Top += 2;
+                            GameWindow.Top += 4;
                         }
                         mov += 1;
                     }
@@ -392,7 +443,7 @@ namespace Maid
             {
                 IntPtr deskHandle = x.Key;
                 Rect deskRect = x.Value;
-                
+
                 if (!coveredWindow.Contains(deskHandle) && deskRect.Left < 1865 && deskRect.Right > 20 && deskRect.Top > avatarHeight && deskHandle != maidWindowHandle && GetTitle(deskHandle) != "Desktop Maid")
                 {
                     visibleWindows.Add(deskHandle, deskRect);
@@ -478,7 +529,7 @@ namespace Maid
             //Console.WriteLine("GameWindow:{0}", standingRect.Top);
             if (GameWindow.Top < taskbarHeight && !dragged)
             {
-                
+
 
                 if (rectangleMaid.Left + 150 > farWindowLeft && rectangleMaid.Right - 150 < farWindowRight)
                 {
@@ -506,7 +557,7 @@ namespace Maid
                     GameWindow.Top = farWindowTop - 200;
                     //Console.WriteLine("{0}  {1}", GameWindow.Top, farWindowTop - 200);
                 }
-                else if((farWindowTop - 200 - GameWindow.Top) > 30 && standing)
+                else if ((farWindowTop - 200 - GameWindow.Top) > 30 && standing)
                 {
                     standing = false;
                 }
@@ -516,7 +567,7 @@ namespace Maid
             {
                 GameWindow.Top = taskbarHeight;
             }
-            
+
         }
 
 
@@ -526,7 +577,7 @@ namespace Maid
 
         public void Player_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            avatarState = "drag";
+            //avatarState = "drag";
             dragged = true;
             mouseUp = false;
             //Console.WriteLine("SHEESH");
@@ -535,12 +586,22 @@ namespace Maid
             if (ResizeMode != ResizeMode.NoResize)
             {
                 ResizeMode = ResizeMode.NoResize;
+                WindowState = WindowState.Normal;
                 UpdateLayout();
             }
             //Console.WriteLine("{0}:MOUSE", e.GetPosition(GameWindow).X);//
-            avatarState = "idle";
+            //avatarState = "idle";
             dragged = false;
             mouseUp = true;
+        }
+        public void Player_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (ResizeMode != ResizeMode.NoResize)
+            {
+                ResizeMode = ResizeMode.NoResize;
+                WindowState = WindowState.Normal;
+                UpdateLayout();
+            }
         }
 
         // Menu
@@ -550,10 +611,13 @@ namespace Maid
             if(MenuGrid.Visibility == Visibility.Hidden)
             {
                 MenuGrid.Visibility = Visibility.Visible;
+                avatarAction.avatarMove(0);
             }
             else
             {
                 MenuGrid.Visibility = Visibility.Hidden;
+                Console.WriteLine(action);
+                avatarAction.avatarMove(action);
             }
         }
 
@@ -561,10 +625,64 @@ namespace Maid
         public void randomTimerTick(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            run = rnd.Next(0, 3);
+
+            if (!dragged && MenuGrid.Visibility == Visibility.Hidden)
+            {
+                if (actionCount >= actionTime)
+                {
+                    List<int> myList = actionList.GetRange(actionList.Count - 1, 1);
+                    foreach (int shit in actionList)
+                    {
+                        Console.Write("{0},", shit);
+                    }
+                    Console.WriteLine();
+                    if (myList.Contains(action))
+                    {
+                        if(action+1 >= 3)
+                        {
+                            action = 0;
+                        }
+                        else
+                        {
+                            action += 1;
+                        }
+                        if ((myList.Contains(1) || myList.Contains(2)) && (action == 1 || action == 2))
+                        {
+                            avatarAction.avatarMove(0);
+                            Thread.Sleep(2000);
+                        }
+                        avatarAction.avatarMove(action);
+                        actionList.Add(action);
+                        actionList.RemoveAt(0);
+                        Console.WriteLine("{0}:{1} contain", action, avatarState);
+                    }
+                    else
+                    {
+                        action = rnd.Next(0, 3);
+                        if ((myList.Contains(1) || myList.Contains(2)) && (action == 1 || action == 2))
+                        {
+                            avatarAction.avatarMove(0);
+                            Thread.Sleep(2000);
+                        }
+                        avatarAction.avatarMove(action);
+                        actionList.Add(action);
+                        actionList.RemoveAt(0);
+                        Console.WriteLine("{0}:{1}", action, avatarState);
+                    }
+                    if (action == 0)
+                    {
+                        actionTime = rnd.Next(10, 30);
+                    }
+                    else
+                    {
+                        actionTime = rnd.Next(15, 30);
+                    }
+                    actionCount = 0;
+                }
+                actionCount += 1;
+            }
             //Console.WriteLine("HELLO {0}", run);
         }
-
 
 
         public void actionTimerTick(object sender, EventArgs e)
@@ -612,42 +730,41 @@ namespace Maid
                         }
                     }
                 }
-                if (run == 0)
+                if (avatarState == "idle")
                 {
-                    avatarState = "idle";
+                    //avatarState = "idle";
                     climbing = false;
                 }
-                else if (run == 1)
+                else if (avatarState == "runLeft")
                 {
                     if (rectangleMaid.Left + avatarHeight - 25 < 0)
                     {
                         GameWindow.Top -= 2;
                         //Console.WriteLine(rectangleMaid.Left);
-                        avatarState = "climb";
+                        //avatarState = "climb";
                         climbing = true;
                     }
                     else
                     {
                         GameWindow.Left -= 2;
                         Flip.ScaleX = 1;
-                        avatarState = "run";
+                        //avatarState = "run";
                         climbing = false;
                     }
                 }
-                else if (run == 2)
+                else if (avatarState == "runRight")
                 {
                     if (rectangleMaid.Right - avatarHeight + 20 > SCREEN_WIDTH)
                     {
                         GameWindow.Top -= 2;
                         //Console.WriteLine(rectangleMaid.Right);
-                        avatarState = "climb";
                         climbing = true;
                     }
                     else
                     {
                         GameWindow.Left += 2;
                         Flip.ScaleX = -1;
-                        avatarState = "run";
+                        //avatarState = "run";
                         climbing = false;
                     }
                 }
@@ -700,10 +817,11 @@ namespace Maid
             for (int i = 0; i < windowLst.Count(); i++)
             {
                 desktopWindows.Add(windowLst[i], windowRect[i]);
+                Console.WriteLine("{0} {1} {2} {3} {4}",GetTitle(windowLst[i]), windowRect[i].Left, windowRect[i].Right, windowRect[i].Top, windowRect[i].Bottom);
             }
             // Game window position
-            //Console.WriteLine("{0}: {1}:",GameWindow.Top.ToString(),GameWindow.Left.ToString());
-            //Console.WriteLine("SHEESH");
+            // Console.WriteLine("{0}: {1}:",GameWindow.Top.ToString(),GameWindow.Left.ToString());
+            // Console.WriteLine("SHEESH");
             // Loop over all 
             int xIndex;
             int yIndex;
@@ -743,7 +861,6 @@ namespace Maid
                 }
             }
 
-
                 switch (e.Key)
             {
                 case Key.Left:
@@ -753,7 +870,7 @@ namespace Maid
                     if (rectangleMaid.Left+avatarHeight-25 < 0)
                     {
                         GameWindow.Top -= 3;
-                        Console.WriteLine(rectangleMaid.Left);
+                        //Console.WriteLine(rectangleMaid.Left);
                         avatarState = "climb";
                         climbing = true;
                     }
@@ -768,7 +885,7 @@ namespace Maid
                     if (rectangleMaid.Right-avatarHeight+20 > SCREEN_WIDTH)
                     {
                         GameWindow.Top -= 3;
-                        Console.WriteLine(rectangleMaid.Right);
+                        //Console.WriteLine(rectangleMaid.Right);
                         avatarState = "climb";
                         climbing = true;
                     }
@@ -789,6 +906,9 @@ namespace Maid
                     {
                         SpeechGrid.Visibility = Visibility.Hidden;
                     }
+                    break;
+                case Key.Space:
+                    GameWindow.Top -= 10;
                     break;
             }
         }
@@ -813,6 +933,12 @@ namespace Maid
                 MenuGrid.Visibility = Visibility.Hidden;
             }
         }
+        public static string ActionModify
+        {
+            get { return avatarState; }
+            set { avatarState = value; }
+        }
+
 
 
 

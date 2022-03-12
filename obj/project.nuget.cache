@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "JlRSYB+xIFtwksjTE14p4MQnZbISB/wEUEbU1XUJqzfoVWDhFLlGKTo2dfpNi8gEoiBId+KLz0ekfJOhzY+dEA==",
+  "success": true,
+  "projectFilePath": "D:\\Mykes\\Documents\\Coding Projects\\TEST WPF\\Maid\\Maid.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mykes\\.nuget\\packages\\materialdesigncolors\\2.0.4\\materialdesigncolors.2.0.4.nupkg.sha512",
+    "C:\\Users\\Mykes\\.nuget\\packages\\materialdesignthemes\\4.3.0\\materialdesignthemes.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mykes\\.nuget\\packages\\scichart.wpf.ui.transitionz\\3.1.251\\scichart.wpf.ui.transitionz.3.1.251.nupkg.sha512",
+    "C:\\Users\\Mykes\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0\\system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+    "C:\\Users\\Mykes\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\Mykes\\.nuget\\packages\\wpfscreenhelper\\1.0.0\\wpfscreenhelper.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -4,6 +4,8 @@
         AllowsTransparency="True"
         Background="Transparent"
         Topmost="True"
+        Visibility ="Visible"
+        ResizeMode="NoResize"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,12 +16,12 @@
         ShowInTaskbar="False"
         Title="Desktop Maid" Height="200" Width="300" >
     <Canvas Name="Background" Focusable="True" Background="Transparent">
-        <Rectangle Name="Player" Height="150" Width="150" Canvas.Left="85" Canvas.Top="95" RenderTransformOrigin="0.4,0.4" MouseLeftButtonDown="Player_MouseLeftButtonDown" MouseRightButtonDown="Player_MouseRightButtonDown">
+        <Rectangle Name="Player" Height="150" Width="150" Canvas.Left="85" Canvas.Top="95" RenderTransformOrigin="0.4,0.4" MouseLeftButtonDown="Player_MouseLeftButtonDown" MouseRightButtonDown="Player_MouseRightButtonDown" MouseLeftButtonUp="Player_MouseLeftButtonUp">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="Flip" ScaleY="1" ScaleX="1"/>
                     <SkewTransform AngleY="0" AngleX="0"/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform x:Name="Rotate" Angle="0"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Rectangle.RenderTransform>
@@ -27,7 +29,7 @@
                 <ImageBrush ImageSource="images/idle1.png"/>
             </Rectangle.Fill>
         </Rectangle>
-
+        
         <Grid Name="MenuGrid" Height="100" Width="55" Canvas.Left="55" Canvas.Top="100" Visibility="Hidden"
               tz:Transitionz.Visibility="{Binding ElementName=MenuGrid, Path=Visibility}"
               tz:Transitionz.Translate="{tz:TranslateParams From='10,0', To='0,0', Duration=200, TransitionOn=Visibility}"
@@ -139,7 +141,7 @@
 
             </Grid>
         </Grid>
-
+        
 
 
     </Canvas>

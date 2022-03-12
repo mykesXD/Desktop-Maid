@@ -1,0 +1,567 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "MaterialDesignColors/2.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        }
+      },
+      "MaterialDesignThemes/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "MaterialDesignColors": "[2.0.4, 3.0.0)"
+        },
+        "compile": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "SciChart.Wpf.UI.Transitionz/3.1.251": {
+        "type": "package",
+        "compile": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        },
+        "runtime": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        }
+      },
+      "System.Runtime.WindowsRuntime/4.6.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        },
+        "build": {
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.ValueTuple.dll": {}
+        }
+      },
+      "WpfScreenHelper/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win": {
+      "MaterialDesignColors/2.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        }
+      },
+      "MaterialDesignThemes/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "MaterialDesignColors": "[2.0.4, 3.0.0)"
+        },
+        "compile": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "SciChart.Wpf.UI.Transitionz/3.1.251": {
+        "type": "package",
+        "compile": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        },
+        "runtime": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        }
+      },
+      "System.Runtime.WindowsRuntime/4.6.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        },
+        "build": {
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.ValueTuple.dll": {}
+        }
+      },
+      "WpfScreenHelper/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x64": {
+      "MaterialDesignColors/2.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        }
+      },
+      "MaterialDesignThemes/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "MaterialDesignColors": "[2.0.4, 3.0.0)"
+        },
+        "compile": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "SciChart.Wpf.UI.Transitionz/3.1.251": {
+        "type": "package",
+        "compile": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        },
+        "runtime": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        }
+      },
+      "System.Runtime.WindowsRuntime/4.6.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        },
+        "build": {
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.ValueTuple.dll": {}
+        }
+      },
+      "WpfScreenHelper/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.6.1/win-x86": {
+      "MaterialDesignColors/2.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignColors.dll": {}
+        }
+      },
+      "MaterialDesignThemes/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "MaterialDesignColors": "[2.0.4, 3.0.0)"
+        },
+        "compile": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net452/MaterialDesignThemes.Wpf.dll": {}
+        },
+        "build": {
+          "build/MaterialDesignThemes.targets": {}
+        }
+      },
+      "SciChart.Wpf.UI.Transitionz/3.1.251": {
+        "type": "package",
+        "compile": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        },
+        "runtime": {
+          "lib/net452/SciChart.Wpf.UI.Transitionz.dll": {}
+        }
+      },
+      "System.Runtime.WindowsRuntime/4.6.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        },
+        "build": {
+          "buildTransitive/net461/System.Runtime.WindowsRuntime.targets": {}
+        }
+      },
+      "System.ValueTuple/4.5.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.ValueTuple.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.ValueTuple.dll": {}
+        }
+      },
+      "WpfScreenHelper/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        },
+        "runtime": {
+          "lib/net40/WpfScreenHelper.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MaterialDesignColors/2.0.4": {
+      "sha512": "l8LfghYjT2mBVp28CAU8UN4GQ6T/euzgGiTwFKy1DPUG8c5rng/CVXXqM5Xof0XAm0MhXgV8yjGRjQ7KOjT/Iw==",
+      "type": "package",
+      "path": "materialdesigncolors/2.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/MaterialDesignColors.Icon.png",
+        "lib/net452/MaterialDesignColors.dll",
+        "lib/net452/MaterialDesignColors.pdb",
+        "lib/netcoreapp3.1/MaterialDesignColors.dll",
+        "lib/netcoreapp3.1/MaterialDesignColors.pdb",
+        "materialdesigncolors.2.0.4.nupkg.sha512",
+        "materialdesigncolors.nuspec"
+      ]
+    },
+    "MaterialDesignThemes/4.3.0": {
+      "sha512": "edXh0Hl2LukyEZN+REVFuN+gaaUFo6AfHSaBjuZ95k4Qz1TljcxnfCznMKkGaQoEsy5ryk85ZbeRY/tOzFmKxg==",
+      "type": "package",
+      "path": "materialdesignthemes/4.3.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MaterialDesignThemes.targets",
+        "build/Resources/Roboto/Roboto-Black.ttf",
+        "build/Resources/Roboto/Roboto-BlackItalic.ttf",
+        "build/Resources/Roboto/Roboto-Bold.ttf",
+        "build/Resources/Roboto/Roboto-BoldItalic.ttf",
+        "build/Resources/Roboto/Roboto-Italic.ttf",
+        "build/Resources/Roboto/Roboto-Light.ttf",
+        "build/Resources/Roboto/Roboto-LightItalic.ttf",
+        "build/Resources/Roboto/Roboto-Medium.ttf",
+        "build/Resources/Roboto/Roboto-MediumItalic.ttf",
+        "build/Resources/Roboto/Roboto-Regular.ttf",
+        "build/Resources/Roboto/Roboto-Thin.ttf",
+        "build/Resources/Roboto/Roboto-ThinItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Bold.ttf",
+        "build/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Italic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Light.ttf",
+        "build/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
+        "build/Resources/Roboto/RobotoCondensed-Regular.ttf",
+        "images/MaterialDesignThemes.Icon.png",
+        "lib/net452/MaterialDesignThemes.Wpf.dll",
+        "lib/net452/MaterialDesignThemes.Wpf.pdb",
+        "lib/net452/MaterialDesignThemes.Wpf.xml",
+        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll",
+        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.pdb",
+        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.xml",
+        "materialdesignthemes.4.3.0.nupkg.sha512",
+        "materialdesignthemes.nuspec",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "SciChart.Wpf.UI.Transitionz/3.1.251": {
+      "sha512": "iMdsvumY9HO/6uurr6qLRxhYoN7u3EEC8lqBy11e65hBak9UISYu3KqvFs3jPi+xloxHpOJ7oz/tzCJn5wnHeg==",
+      "type": "package",
+      "path": "scichart.wpf.ui.transitionz/3.1.251",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/SciChart.Wpf.UI.Transitionz.dll",
+        "lib/net452/SciChart.Wpf.UI.Transitionz.xml",
+        "lib/netcoreapp3.0/SciChart.Wpf.UI.Transitionz.dll",
+        "lib/netcoreapp3.0/SciChart.Wpf.UI.Transitionz.xml",
+        "scichart.wpf.ui.transitionz.3.1.251.nupkg.sha512",
+        "scichart.wpf.ui.transitionz.nuspec"
+      ]
+    },
+    "System.Runtime.WindowsRuntime/4.6.0": {
+      "sha512": "IWrs1TmbxP65ZZjIglNyvDkFNoV5q2Pofg5WO7I8RKQOpLdFprQSh3xesOoClBqR4JHr4nEB1Xk1MqLPW1jPuQ==",
+      "type": "package",
+      "path": "system.runtime.windowsruntime/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/net45/System.Runtime.WindowsRuntime.targets",
+        "build/net451/System.Runtime.WindowsRuntime.targets",
+        "build/net461/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net45/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net451/System.Runtime.WindowsRuntime.targets",
+        "buildTransitive/net461/System.Runtime.WindowsRuntime.targets",
+        "lib/net45/_._",
+        "lib/netstandard1.0/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard1.0/System.Runtime.WindowsRuntime.xml",
+        "lib/netstandard1.2/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard1.2/System.Runtime.WindowsRuntime.xml",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.dll",
+        "lib/netstandard2.0/System.Runtime.WindowsRuntime.xml",
+        "lib/portable-win8+wp8+wpa81/_._",
+        "lib/uap10.0.16299/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Runtime.WindowsRuntime.dll",
+        "ref/netcore50/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netcore50/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard1.0/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard1.2/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/de/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/es/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/fr/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/it/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ja/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ko/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/ru/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/zh-hans/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard1.2/zh-hant/System.Runtime.WindowsRuntime.xml",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.dll",
+        "ref/netstandard2.0/System.Runtime.WindowsRuntime.xml",
+        "ref/portable-win8+wp8+wpa81/_._",
+        "ref/uap10.0.16299/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "runtimes/win-aot/lib/netcore50/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win-aot/lib/uap10.0.16299/_._",
+        "runtimes/win/lib/netcore50/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Runtime.WindowsRuntime.xml",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.runtime.windowsruntime.4.6.0.nupkg.sha512",
+        "system.runtime.windowsruntime.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.ValueTuple/4.5.0": {
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "type": "package",
+      "path": "system.valuetuple/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.ValueTuple.dll",
+        "lib/net461/System.ValueTuple.xml",
+        "lib/net47/System.ValueTuple.dll",
+        "lib/net47/System.ValueTuple.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.ValueTuple.dll",
+        "lib/netstandard1.0/System.ValueTuple.xml",
+        "lib/netstandard2.0/_._",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "lib/portable-net40+sl4+win8+wp8/System.ValueTuple.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.ValueTuple.dll",
+        "ref/net47/System.ValueTuple.dll",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard2.0/_._",
+        "ref/portable-net40+sl4+win8+wp8/System.ValueTuple.dll",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.valuetuple.4.5.0.nupkg.sha512",
+        "system.valuetuple.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "WpfScreenHelper/1.0.0": {
+      "sha512": "OX9vitUalpiYOf1p3ZGeWAts9daluQ7PlID4ByUGcjXZALCDMZi9A6668WIXoebezV1aQx+I1k4y0k6eMCIt4Q==",
+      "type": "package",
+      "path": "wpfscreenhelper/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/WpfScreenHelper.dll",
+        "lib/netcoreapp3.0/WpfScreenHelper.dll",
+        "wpfscreenhelper.1.0.0.nupkg.sha512",
+        "wpfscreenhelper.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "MaterialDesignThemes >= 4.3.0",
+      "SciChart.Wpf.UI.Transitionz >= 3.1.251",
+      "System.Runtime.WindowsRuntime >= 4.6.0",
+      "System.ValueTuple >= 4.5.0",
+      "WpfScreenHelper >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Mykes\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Mykes\\Documents\\Coding Projects\\TEST WPF\\Maid\\Maid.csproj",
+      "projectName": "Maid",
+      "projectPath": "D:\\Mykes\\Documents\\Coding Projects\\TEST WPF\\Maid\\Maid.csproj",
+      "packagesPath": "C:\\Users\\Mykes\\.nuget\\packages\\",
+      "outputPath": "D:\\Mykes\\Documents\\Coding Projects\\TEST WPF\\Maid\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\Mykes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "MaterialDesignThemes": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
+          "SciChart.Wpf.UI.Transitionz": {
+            "target": "Package",
+            "version": "[3.1.251, )"
+          },
+          "System.Runtime.WindowsRuntime": {
+            "target": "Package",
+            "version": "[4.6.0, )"
+          },
+          "System.ValueTuple": {
+            "target": "Package",
+            "version": "[4.5.0, )"
+          },
+          "WpfScreenHelper": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

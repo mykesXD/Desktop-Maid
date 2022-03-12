@@ -49,94 +49,97 @@ namespace Maid
         };
         int playerCounter = 0;
 
-        public void PlayPlayerAnimation(Rectangle avatarCanvas, string avatarState)
+        public void PlayPlayerAnimation(Rectangle avatarCanvas, string avatarState,bool climbing)
         {
-
-            if (avatarState == "idle")
+            if (MainWindow.dragged)
             {
-                if (playerCounter >= idleAnimation.Count)
                 {
-                    playerCounter = 0;
+                    if (playerCounter >= dragAnimation.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(dragAnimation[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
-                {
-                    ImageSource = new BitmapImage(new Uri(idleAnimation[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
             }
-            else if (avatarState == "run")
+            else
             {
-                if (playerCounter >= runAnimation.Count)
+                if (climbing)
                 {
-                    playerCounter = 0;
+                    if (playerCounter >= climbAnimation.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(climbAnimation[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
+                else if (avatarState == "idle")
                 {
-                    ImageSource = new BitmapImage(new Uri(runAnimation[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
-            }
-            else if (avatarState == "drag")
-            {
-                if (playerCounter >= dragAnimation.Count)
-                {
-                    playerCounter = 0;
+                    if (playerCounter >= idleAnimation.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(idleAnimation[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
+                else if (avatarState == "runRight" || avatarState == "runLeft")
                 {
-                    ImageSource = new BitmapImage(new Uri(dragAnimation[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
-            }
-            else if (avatarState == "dragRight")
-            {
-                if (playerCounter >= dragRight.Count)
-                {
-                    playerCounter = 0;
+                    if (playerCounter >= runAnimation.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(runAnimation[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
+                else if (avatarState == "dragRight")
                 {
-                    ImageSource = new BitmapImage(new Uri(dragRight[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
-            }
-            else if (avatarState == "dragLeft")
-            {
-                if (playerCounter >= dragLeft.Count)
-                {
-                    playerCounter = 0;
+                    if (playerCounter >= dragRight.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(dragRight[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
+                else if (avatarState == "dragLeft")
                 {
-                    ImageSource = new BitmapImage(new Uri(dragLeft[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
-            }
-            else if (avatarState == "fall")
-            {
-                if (playerCounter >= fallAnimation.Count)
-                {
-                    playerCounter = 0;
+                    if (playerCounter >= dragLeft.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(dragLeft[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
+                else if (avatarState == "fall")
                 {
-                    ImageSource = new BitmapImage(new Uri(fallAnimation[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
-            }
-            else if (avatarState == "climb")
-            {
-                if (playerCounter >= climbAnimation.Count)
-                {
-                    playerCounter = 0;
+                    if (playerCounter >= fallAnimation.Count)
+                    {
+                        playerCounter = 0;
+                    }
+                    avatarCanvas.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri(fallAnimation[playerCounter], UriKind.Absolute))
+                    };
+                    playerCounter++;
                 }
-                avatarCanvas.Fill = new ImageBrush
-                {
-                    ImageSource = new BitmapImage(new Uri(climbAnimation[playerCounter], UriKind.Absolute))
-                };
-                playerCounter++;
             }
-            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Drawing;
 namespace Maid
 {
     /// <summary>
@@ -22,17 +23,22 @@ namespace Maid
         public SettingsMenu()
         {
             InitializeComponent();
-        }
-
-        public void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow.settingsWindowOpen = false;
-            Close();
+            System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
         }
 
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+        private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.settingsWindowOpen = false;
+            Close();
+        }
+
     }
 }

@@ -4,21 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maid"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+
+        FontFamily="Fredoka"
+        FontSize="20"
         mc:Ignorable="d"
-        Title="SettingsMenu" Height="400" Width="500"
+        Title="SettingsMenu" Width="980" Height="720" 
         WindowStartupLocation="Manual" 
         Left="700" Top="500"
         WindowStyle="None"
         ResizeMode="NoResize"
+        Background="#FFF2F2F2"
+        AllowsTransparency="True"
         >
 
-    <Canvas Background="#FFF3E1C5" MouseLeftButtonDown="Canvas_MouseLeftButtonDown">
+    <Canvas Background="#FFF2F2F2"  MouseLeftButtonDown="Canvas_MouseLeftButtonDown">
 
-        <Rectangle Width="40" Height="40" Canvas.Left="455" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Canvas.Top="5">
+        <Rectangle Height="35" Canvas.Left="1047" StrokeThickness="5" Width="35" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Canvas.Top="10">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="images/x_icon.png"/>
+                <ImageBrush ImageSource="images/icon_x.png"/>
             </Rectangle.Fill>
         </Rectangle>
-    </Canvas>
+        <Grid Height="195" Canvas.Left="340" Canvas.Top="135">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Default" FontSize="22" Width="135" Height="50" Background="#FF6900E2" BorderBrush="{x:Null}" Margin="0,105,0,40" Grid.ColumnSpan="2"/>
+            <Button Content="Change" FontSize="22" Width="135" Height="50" Background="#FF6900E2" BorderBrush="{x:Null}" Margin="0,22,0,123" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Button Content="Apply" FontSize="24" Canvas.Left="325" Canvas.Top="640" Width="150" Height="60" Background="#FF6900E2" BorderBrush="{x:Null}"/>
+        <Button Content="Cancel" FontSize="24" Canvas.Left="560" Canvas.Top="640" Width="150" Height="60" Background="#FF6900E2" BorderBrush="{x:Null}"/>
+        <CheckBox Name="CbDisableFullScreen" Content="Disable in fullscreen" FontSize="10" Canvas.Left="640" Canvas.Top="80" Height="24" Width="171" Background="#FF6900E2">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Name="CbSleep" Content="Sleep" FontSize="10" Canvas.Left="640" Canvas.Top="140" Height="24" Width="171" Background="#FF6900E2" BorderBrush="#FF6900E2">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Name="CbClimb" Content="Climb" FontSize="10" Canvas.Left="640" Canvas.Top="200" Height="24" Width="171" Background="#FF6900E2">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Name="CbSeeScreen" Content="See screen activity" FontSize="10" Canvas.Left="640" Canvas.Top="260" Height="24" Width="171" Background="#FF6900E2">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Content="CheckBox" FontSize="10" Canvas.Left="640" Canvas.Top="320" Height="24" Width="171" Background="#FF6900E2">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
 
+        <TextBlock Text="Skin" FontSize="24" Canvas.Left="146" Canvas.Top="56"/>
+        <Rectangle Height="220" StrokeThickness="5" Width="220" Canvas.Left="60" Canvas.Top="110" Fill="Black">
+        </Rectangle>
+        <TextBlock Text="Size" FontSize="24" Canvas.Left="220" Canvas.Top="416"/>
+        <Slider Canvas.Left="85" Canvas.Top="465" Width="310" Foreground="#FF6900E2" BorderBrush="#00000000"/>
+    </Canvas>
 </Window>
