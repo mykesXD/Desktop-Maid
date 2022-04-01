@@ -10,7 +10,7 @@ namespace Maid
 {
     class Messages
     {
-        List<string> pm8to12 = new List<string>
+        List<string> messagesMorning = new List<string>
         {
             "Pretty early today huh?",
             "Morning! How’s it going?",

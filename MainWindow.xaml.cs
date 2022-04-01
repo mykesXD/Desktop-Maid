@@ -72,6 +72,18 @@ namespace Maid
         IntPtr standingWinHandle;
         public bool _IsDragInProgress { get; set; }
         public System.Windows.Point _FormMousePosition { get; set; }
+
+        double speedX = 0;
+        double speedY = 0;
+        int speedXAvg = 0;
+        int speedYAvg = 0;
+        double forceX = 0;
+        double forceY = 0;
+        string throwX, throwY;
+        bool force = false;
+        bool falling = false;
+
+
         // Creates list of all open windows with Handle,Name
         public static IDictionary<HWND, string> GetOpenWindows()
         {
@@ -115,7 +127,6 @@ namespace Maid
             return builder.ToString();
         }
         // Initilaze the window
-
         DispatcherTimer randomTimer = new DispatcherTimer();
         DispatcherTimer actionTimer = new DispatcherTimer();
         DispatcherTimer mouseTimer = new DispatcherTimer();
@@ -190,6 +201,7 @@ namespace Maid
             CompositionTarget.Rendering += MainEventTimer;
         }
 
+        //Drag Animation
         private void FastAnimationTimerTick(object sender, EventArgs e)
         {
             if (dragged)
@@ -213,13 +225,14 @@ namespace Maid
         }
         private void MainEventTimer(object sender, EventArgs e)
         {
-            
             // Accelaration on mouse release (WARNIN: DONT TRY VELOCITY. PHYSICS IS OUT OF QUESTION I TRIED)
             if (dragged)
             {
                 Point shit = Windows.GetMousePosition();
                 
                 //Console.WriteLine("MOUSE {0}", Windows.GetMousePosition());
+
+                // Rotate avatar opposite of the direction being dragged
                 mousePositions.Add(shit);
                 if (mousePositions.Count > 10)
                 {
@@ -294,60 +307,146 @@ namespace Maid
             }
             if (mouseUp)
             {
+                // Stop rotation
                 if(avatarState == "idle" || avatarState == "runRight" || climbing || avatarState == "runLeft")
                 {
                     Rotate.Angle = 0;
                 }
-                //avatarState = "idle";
+
+                // Apply force to avatar slightly after drag mouse released, giving illusion of physic
                 int mouseCount = 5;
                 //Console.WriteLine(mousePositions.Count);
-                double speedX = 0;
+                /*double speedX = 0;
                 double speedY = 0;
                 int speedXAvg = 0;
                 int speedYAvg = 0;
+                double forceX = 0;
+                double forceY = 0;
+                string throwX, throwY;
+                bool force = false;*/
+                // Set maximum amount for last positions of mouse
                 if (mousePositions.Count < mouseCount)
                 {
                     mouseCount = mousePositions.Count;
                 }
-                if (mouseCount > 1)
+                if (mouseCount > 0)
                 {
+                    mouseCount = mousePositions.Count;
+                    
                     //dragged = true;
-                    for (int i = 1; i < mouseCount; i++)
+                    //for (int i = mouseCount; i > 0; i--)
+                    if (mousePositions[mouseCount - 1].X > mousePositions[mouseCount - 3].X)
                     {
-                        speedX += mousePositions[mousePositions.Count - i].X - mousePositions[mousePositions.Count - i - 1].X;
-                        speedY += mousePositions[mousePositions.Count - i].Y - mousePositions[mousePositions.Count - i - 1].Y;
-                    }
-                    speedXAvg = Convert.ToInt32(speedX / mouseCount);
-                    speedYAvg = Convert.ToInt32(speedY / mouseCount);
-                    if (mov < 10)
-                    {
-                        if (speedXAvg > 0)
-                        {
-                            GameWindow.Left += 4;
-                        }
-                        else if (speedXAvg < 0)
-                        {
-                            GameWindow.Left -= 4;
-                        }
-                        if (speedYAvg > 0)
-                        {
-                            GameWindow.Top -= 4;
-                        }
-                        else if (speedYAvg < 0)
-                        {
-                            GameWindow.Top += 4;
-                        }
-                        mov += 1;
+                        speedX = mousePositions[mouseCount - 1].X - mousePositions[mouseCount - 3].X;
+                        throwX = "right";
                     }
                     else
                     {
-                        mov = 0;
-                        up = 5;
-                        down = 0;
-                        mousePositions.Clear();
+                        speedX = mousePositions[mouseCount - 3].X - mousePositions[mouseCount - 1].X;
+                        throwX = "left";
+                    }
+                    if (mousePositions[mouseCount - 1].Y > mousePositions[mouseCount - 3].Y)
+                    {
+                        speedY = mousePositions[mouseCount - 1].Y - mousePositions[mouseCount - 3].Y;
+                        throwY = "up";
+                    }
+                    else
+                    {
+                        speedY = mousePositions[mouseCount - 3].Y - mousePositions[mouseCount - 1].Y;
+                        throwY = "down";
+                    }
+                    if(speedX > 4)
+                    {
+                        speedX = 4;
+                    }
+                    if(speedY > 8)
+                    {
+                        speedY = 8;
+                    }
+                    if (forceX < speedX && falling == false)
+                    {
+                        forceX = speedX;
+                    }
+                    if (forceY < speedY && falling == false)
+                        forceY = speedY;
+                    if ((int)forceX == speedX) {
+                        falling = true;
+                        Console.WriteLine("BRUHHHHHHHHHHHHH");
+                    }
+                    if (falling == true)
+                    {
+                        forceX -= 0.025;
+                        forceY -= 0.1;
+                    }
+                    if (forceX <= 0 && forceY <= 0)
+                    {
+                        forceX = 0;
+                        forceY = 0;
+                        falling = false;
                         mouseUp = false;
                         dragged = false;
+                        mousePositions.Clear();
                     }
+
+
+                    if (forceY < 0 || forceY == 0.5)
+                    {
+                        forceY = 0;
+                    }
+
+                    //Console.WriteLine(falling);
+                    Console.WriteLine("speedX: {0}", speedX);
+                    Console.WriteLine("speedY: {0}", speedY);
+                    Console.WriteLine("forceX: {0}", forceX);
+                    Console.WriteLine("forceY: {0}", forceY);
+
+                    if (throwX == "left")
+                    {
+                        GameWindow.Left -= forceX;
+                    }
+                    if (throwX == "right")
+                    {
+                        GameWindow.Left += forceX;
+                    }
+                    if (throwY == "down")
+                    {
+                        GameWindow.Top -= forceY;
+                    }
+                    if (throwY == "up")
+                    {
+                        GameWindow.Top += forceY;
+                    }
+                    
+                    }
+                    /*speedXAvg = Convert.ToInt32(speedX / mouseCount);
+                    speedYAvg = Convert.ToInt32(speedY / mouseCount);
+
+                    if (speedXAvg > 0)
+                    {
+                        GameWindow.Left += 5;
+                    }
+                    else if (speedXAvg < 0)
+                    {
+                        GameWindow.Left -= 5;
+                    }
+                    if (speedYAvg > 0)
+                    {
+                        GameWindow.Top -= 5;
+                    }
+                    else if (speedYAvg < 0)
+                    {
+                        GameWindow.Top += 5;
+                    }
+                    mov += 1;
+                }*/
+                else
+                {
+                    mov = 0;
+                    up = 5;
+                    down = 0;
+                    mousePositions.Clear();
+                    mouseUp = false;
+                    dragged = false;
                 }
             }
             Rect rectangle1 = new Rect();

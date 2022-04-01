@@ -124,3 +124,14 @@ D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\MaterialDesignColor
 D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\MaterialDesignThemes.Wpf.dll
 D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\MaterialDesignThemes.Wpf.pdb
 D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Release\App.baml
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\Syncfusion.Licensing.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\Syncfusion.Shared.WPF.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\System.Diagnostics.DiagnosticSource.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\System.Reactive.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\System.Threading.Tasks.Extensions.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\XamlFlair.WPF.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\obj\Release\Maid.sourcelink.json
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\HtmlTextBlock.dll
+D:\Mykes\Documents\Coding Projects\TEST WPF\Maid\bin\Release\HtmlTextBlock.pdb

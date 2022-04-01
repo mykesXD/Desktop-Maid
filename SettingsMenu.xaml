@@ -4,72 +4,109 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Maid"
-        
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" 
+        xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
-
+        materialDesign:ButtonAssist.CornerRadius="10"
+        
         FontFamily="Fredoka"
         FontSize="20"
         mc:Ignorable="d"
         Title="SettingsMenu" Width="980" Height="720" 
-        WindowStartupLocation="Manual" 
+        WindowStartupLocation="CenterScreen" 
         Left="700" Top="500"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Background="#FFF2F2F2"
+        Background="White"
         AllowsTransparency="True"
         >
+    <Window.Resources>
+        <System:String x:Key="mainColor">#ff6599</System:String>
+    </Window.Resources>
+    <Canvas MouseLeftButtonDown="Canvas_MouseLeftButtonDown">
+        <Canvas.Background>
+            <ImageBrush ImageSource="images/Menu/bgPattern2.png" Opacity="0.5"/>
+        </Canvas.Background>
 
-    <Canvas Background="#FFF2F2F2"  MouseLeftButtonDown="Canvas_MouseLeftButtonDown">
-
-        <Rectangle Height="35" Canvas.Left="1047" StrokeThickness="5" Width="35" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Canvas.Top="10">
+        <Rectangle Height="30" Canvas.Left="935" StrokeThickness="5" Width="30" MouseLeftButtonDown="Rectangle_MouseLeftButtonDown" Canvas.Top="15" RenderTransformOrigin="-1.914,0.429">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="images/icon_x.png"/>
+                <ImageBrush ImageSource="images/icon_x.png" Opacity="0.8"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Grid Height="195" Canvas.Left="340" Canvas.Top="135">
+        <Grid x:Name ="Skin" Height="195" Canvas.Left="340" Canvas.Top="135"
+              tz:Transitionz.Visibility="{Binding IsVisible, ElementName=Skin}"
+              tz:Transitionz.Translate="{tz:TranslateParams Duration=400, From=0\,10, TransitionOn=Visibility, To=0\,0}"
+              tz:Transitionz.Opacity="{tz:OpacityParams Duration=200, From=0, TransitionOn=Visibility, To=1}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="23*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Default" FontSize="22" Width="135" Height="50" Background="#FF6900E2" BorderBrush="{x:Null}" Margin="0,105,0,40" Grid.ColumnSpan="2"/>
-            <Button Content="Change" FontSize="22" Width="135" Height="50" Background="#FF6900E2" BorderBrush="{x:Null}" Margin="0,22,0,123" Grid.ColumnSpan="2"/>
+
+            <Button Content="Default" FontSize="22" Width="135" Height="50" Background="{Binding Source={StaticResource mainColor}}" BorderBrush="White" BorderThickness="3" Margin="0,105,0,40" Grid.ColumnSpan="2" Foreground="White"/>
+            <Button x:Name="BtnChange" Content="Change" FontSize="22" Width="135" Height="50" Background="{Binding Source={StaticResource mainColor}}" BorderBrush="White" BorderThickness="3" Margin="0,22,0,123" Grid.ColumnSpan="2" Foreground="White"/>
         </Grid>
-        <Button Content="Apply" FontSize="24" Canvas.Left="325" Canvas.Top="640" Width="150" Height="60" Background="#FF6900E2" BorderBrush="{x:Null}"/>
-        <Button Content="Cancel" FontSize="24" Canvas.Left="560" Canvas.Top="640" Width="150" Height="60" Background="#FF6900E2" BorderBrush="{x:Null}"/>
-        <CheckBox Name="CbDisableFullScreen" Content="Disable in fullscreen" FontSize="10" Canvas.Left="640" Canvas.Top="80" Height="24" Width="171" Background="#FF6900E2">
+        <Button Content="Apply" FontSize="24" Canvas.Left="305" Canvas.Top="640" Width="150" Height="60" Background="{Binding Source={StaticResource mainColor}}" Foreground="White" BorderBrush="White" BorderThickness="3"
+              tz:Transitionz.Visibility="{Binding IsVisible, ElementName=Skin}"
+              tz:Transitionz.Translate="{tz:TranslateParams Duration=400, From=0\,10, TransitionOn=Visibility, To=0\,0}"
+              tz:Transitionz.Opacity="{tz:OpacityParams Duration=200, From=0, TransitionOn=Visibility, To=1}"/>
+        <Button Content="Cancel" FontSize="24" Canvas.Left="525" Canvas.Top="640" Width="150" Height="60" Background="{Binding Source={StaticResource mainColor}}" BorderBrush="White" BorderThickness="3" Foreground="White" />
+        <CheckBox x:Name="CbDisableFullScreen" Content="Disable in fullscreen" FontSize="10" Canvas.Left="615" Canvas.Top="85" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <CheckBox Name="CbSleep" Content="Sleep" FontSize="10" Canvas.Left="640" Canvas.Top="140" Height="24" Width="171" Background="#FF6900E2" BorderBrush="#FF6900E2">
+        <CheckBox x:Name="CbSleep" Content="Sleep" FontSize="10" Canvas.Left="615" Canvas.Top="145" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}" BorderBrush="{Binding Source={StaticResource mainColor}}">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <CheckBox Name="CbClimb" Content="Climb" FontSize="10" Canvas.Left="640" Canvas.Top="200" Height="24" Width="171" Background="#FF6900E2">
+        <CheckBox x:Name="CbClimb" Content="Climb" FontSize="10" Canvas.Left="615" Canvas.Top="205" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <CheckBox Name="CbSeeScreen" Content="See screen activity" FontSize="10" Canvas.Left="640" Canvas.Top="260" Height="24" Width="171" Background="#FF6900E2">
+        <CheckBox x:Name="CbSeeScreen" Content="See screen activity" FontSize="10" Canvas.Left="615" Canvas.Top="265" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <CheckBox Content="CheckBox" FontSize="10" Canvas.Left="640" Canvas.Top="320" Height="24" Width="171" Background="#FF6900E2">
+        <CheckBox x:Name="CbSeeScreen_Copy" Content="Something something" FontSize="10" Canvas.Left="615" Canvas.Top="325" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox x:Name="CbSeeScreen_Copy2" Content="Yepp" FontSize="10" Canvas.Left="615" Canvas.Top="385" Height="24" Width="171" Background="{Binding Source={StaticResource mainColor}}">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
 
-        <TextBlock Text="Skin" FontSize="24" Canvas.Left="146" Canvas.Top="56"/>
-        <Rectangle Height="220" StrokeThickness="5" Width="220" Canvas.Left="60" Canvas.Top="110" Fill="Black">
+        <TextBlock Text="Skin" FontSize="26" Canvas.Left="153" Canvas.Top="49"/>
+        <Rectangle Height="250" StrokeThickness="5" Width="250" Canvas.Left="60" Canvas.Top="110" Stroke="#FFFF6599">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/Menu/grid.jpg" Opacity="0.5"/>
+            </Rectangle.Fill>
         </Rectangle>
-        <TextBlock Text="Size" FontSize="24" Canvas.Left="220" Canvas.Top="416"/>
-        <Slider Canvas.Left="85" Canvas.Top="465" Width="310" Foreground="#FF6900E2" BorderBrush="#00000000"/>
+        <Rectangle Height="250"  Width="250" Canvas.Left="70" Canvas.Top="180">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/idle1.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock Text="Size" FontSize="26" Canvas.Left="215" Canvas.Top="464"/>
+
+        <Slider Canvas.Left="95" Canvas.Top="495" Width="200" Foreground="{Binding Source={StaticResource mainColor}}" BorderBrush="White" BorderThickness="3">
+            <Slider.LayoutTransform>
+                <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+            </Slider.LayoutTransform>
+        </Slider>
+        <TextBlock Canvas.Left="377" TextWrapping="Wrap" Text="500px" Canvas.Top="540"/>
+        <TextBlock Canvas.Left="72" TextWrapping="Wrap" Text="50px" Canvas.Top="540"/>
+        <TextBlock Canvas.Left="53" TextWrapping="Wrap" Canvas.Top="367"><Run Text="Recommended size: 125x125"/></TextBlock>
+
     </Canvas>
 </Window>

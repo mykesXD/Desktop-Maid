@@ -11,10 +11,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz"
+        xmlns:xf="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
         xmlns:local="clr-namespace:Maid"
         mc:Ignorable="d"
         ShowInTaskbar="False"
         Title="Desktop Maid" Height="200" Width="300" >
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="0"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="40"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    
     <Canvas Name="Background" Focusable="True" Background="Transparent">
         <Rectangle Name="Player" Height="150" Width="150" Canvas.Left="85" Canvas.Top="95" RenderTransformOrigin="0.4,0.4" MouseLeftButtonDown="Player_MouseLeftButtonDown" MouseRightButtonDown="Player_MouseRightButtonDown" MouseLeftButtonUp="Player_MouseLeftButtonUp">
             <Rectangle.RenderTransform>
@@ -29,7 +52,7 @@
                 <ImageBrush ImageSource="images/idle1.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        
+
         <Grid Name="MenuGrid" Height="100" Width="55" Canvas.Left="55" Canvas.Top="100" Visibility="Hidden"
               tz:Transitionz.Visibility="{Binding ElementName=MenuGrid, Path=Visibility}"
               tz:Transitionz.Translate="{tz:TranslateParams From='10,0', To='0,0', Duration=200, TransitionOn=Visibility}"
@@ -42,14 +65,14 @@
               Grid.Row="0"
               Height="40"
               Width="40"
-              Fill="#FFEADFD1">
+              Fill="#FFFFF7FE">
             </Ellipse>
             <Ellipse
               Name ="Settings"
               Grid.Row="0"
               Height="40"
               Width="40"
-              StrokeThickness="3" Stroke="#FFE8E8E8" MouseLeftButtonDown="Settings_MouseLeftButtonDown">
+              StrokeThickness="3" Stroke="#FFFFCDDE" MouseLeftButtonDown="Settings_MouseLeftButtonDown">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="images/settings.png">
                         <ImageBrush.RelativeTransform>
@@ -68,13 +91,13 @@
               Grid.Row="1"
               Height="40"
               Width="40"
-              Fill="#FFEADFD1">
+              Fill="#FFFFF7FE">
             </Ellipse>
             <Ellipse
               Grid.Row="1"
               Height="40"
               Width="40"
-              StrokeThickness="3" Stroke="#FFE8E8E8">
+              StrokeThickness="3" Stroke="#FFFFCDDE">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="images/bell.png">
                         <ImageBrush.Transform>
@@ -100,20 +123,22 @@
 
         <Grid Name="SpeechGrid" Height="200" Width="300" Visibility="Hidden"
               tz:Transitionz.Visibility="{Binding ElementName=SpeechGrid, Path=Visibility}"
-              tz:Transitionz.Translate="{tz:TranslateParams From='0,10', To='0,0', Duration=200, TransitionOn=Visibility}"
+              tz:Transitionz.Translate="{tz:TranslateParams From='0,10', To='0,0', Duration=400, TransitionOn=Visibility}"
               tz:Transitionz.Opacity="{tz:OpacityParams From=0, To=1, Duration=200, TransitionOn=Visibility}">
+
             <Rectangle Name="SpeechBoxPointer" Canvas.Left="140" Canvas.Top="66" Visibility="Visible" RenderTransformOrigin="0.5,0.5" Margin="146,83,149,112">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <ScaleTransform ScaleY="-2" ScaleX="-2"/>
                         <SkewTransform/>
                         <RotateTransform Angle="45"/>
                         <TranslateTransform/>
                     </TransformGroup>
                 </Rectangle.RenderTransform>
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="#FFEADFD1"/>
+                    <SolidColorBrush Color="#FFFFF7FE"/>
                 </Rectangle.Fill>
+                
             </Rectangle>
 
             <Grid Height="86" Canvas.Left="52" Width="200" Margin="50,0,50,114">
@@ -125,23 +150,15 @@
 
 
 
-                <TextBox Grid.Column="1" Name="SpeechBox" Canvas.Left="0" TextWrapping="Wrap" TextAlignment="Center" Text="Good morning!" FontSize = "16"
-                     Canvas.Top="0" TextChanged="TextBox_TextChanged" Visibility="Visible" FontFamily="Arial Rounded MT Bold" Background="#FFEADFD1" BorderThickness="0"
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Grid.Column="1" Name="SpeechBox" Canvas.Left="0" TextWrapping="Wrap" TextAlignment="Center" Text="Good morning!" FontSize = "16"
+                     Canvas.Top="0" TextChanged="TextBox_TextChanged" Visibility="Visible" FontFamily="Fredoka" Background="#FFFFF7FE" BorderThickness="0"
                      VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                      IsInactiveSelectionHighlightEnabled="True" MaxWidth="200" MaxHeight="90" Padding="7,7,7,10" 
                      AllowDrop="False" IsTabStop="False" RenderTransformOrigin="0.505,0.486" HorizontalScrollBarVisibility="Visible" Margin="0.017,0,2,0" UseLayoutRounding="False"
-                     Focusable="False" HorizontalAlignment="Center">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
-                        </Style>
-                    </TextBox.Resources>
-
-                </TextBox>
-
+                     Focusable="False" HorizontalAlignment="Center" FontWeight="Medium" Foreground="#FF0E0E0E"/>
             </Grid>
         </Grid>
-        
+
 
 
     </Canvas>

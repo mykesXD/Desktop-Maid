@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("astolfo%20plushie.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menu/bgpattern.png")]
 
 
